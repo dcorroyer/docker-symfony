@@ -43,3 +43,9 @@ You need to use **services** to use php and yarn in your containers and you didn
     docker-compose run --rm php74-service php bin/console d:d:c (to create database)
     docker-compose run --rm node-service yarn install (to install nodejs dependencies)
     docker-compose run --rm node-service yarn dev (to run webpack)
+
+A Makefile is up to provide some short commands to help you.
+
+If you can't modify any file in the app folder, you can run this command in the php container:
+
+    chmod -R 777 .
