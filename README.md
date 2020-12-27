@@ -1,4 +1,4 @@
-# How to build a Symfony - Webpack app
+# How to build a Symfony app
 
 ## Installation:
 
@@ -13,7 +13,6 @@ The command will download and install docker images to make your containers
 When it is done, you'll have these containers
 
     php74-container
-    node-container
     mysql-container
     nginx-container
 
@@ -28,11 +27,6 @@ Now, if you want to create your Symfony 5 app, you have to connect to the php co
 In your container, you'll be in your working folder, you just have to create the project (will be built in the app folder):
 
     composer create-project symfony/website-skeleton .
-
-In the case of Symfony/React app you can install bundles in the container:
-
-    composer req encore
-    composer req api
 
 Now your project is up. GREAT !
 
