@@ -1,7 +1,6 @@
-### mysql
 
+### mysql
 /mysql/
 
-### phpstorm
-
-/.idea/
+### Mac OS files
+.DS_Store

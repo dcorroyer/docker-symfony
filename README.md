@@ -1,10 +1,10 @@
-# How to build a Symfony app
+# A Symfony app w/ Docker
 
 ## Installation:
 
 You have to clone this repository and make:
 
-    docker-compose up -d
+    make up
 
 If you have any denied permission, make sudo
 
