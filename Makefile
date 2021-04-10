@@ -1,37 +1,47 @@
 up:
-	docker-compose up -d
+    docker-compose up -d
 
 down:
-	docker-compose down
+    docker-compose down
 
 build:
-	docker-compose build
+    docker-compose build
 
 rebuild:
-	docker-compose build --no-cache
+    docker-compose build --no-cache
 
-run:
-	docker-compose run --rm php74-service symfony serve
+back:
+    docker-compose exec php74-service sh
+
+symfonycreate:
+    docker-compose run --rm php74-service composer create-project symfony/website-skeleton .
+
+symfonyrun:
+    docker-compose run --rm php74-service symfony serve
 
 composer:
-	docker-compose run --rm php74-service composer install
+    docker-compose run --rm php74-service composer install
 
-db:
-	docker-compose run --rm php74-service php bin/console d:d:c
+dbcreate:
+    docker-compose run --rm php74-service php bin/console d:d:c
 
-db_update:
-	docker-compose run --rm php74-service php bin/console d:s:u --force
+dbupdate:
+    docker-compose run --rm php74-service php bin/console d:s:u --force
 
-db_rebuild:
-	docker-compose run --rm php74-service php bin/console d:d:d --force
-	docker-compose run --rm php74-service php bin/console d:d:c
-	docker-compose run --rm php74-service php bin/console d:s:u --force
+dbrebuild:
+    docker-compose run --rm php74-service php bin/console d:d:d --force
+    docker-compose run --rm php74-service php bin/console d:d:c
+    docker-compose run --rm php74-service php bin/console d:s:u --force
 
-yarn:
-	docker-compose run --rm node-service yarn install
+dbfixtures:
+    docker-compose run --rm php74-service php bin/console d:f:l
+    yes
 
-yarn_build:
-	docker-compose run --rm node-service yarn build
+yarninstall:
+    docker-compose run --rm node-service yarn install
 
-yarn_run:
-	docker-compose run --rm node-service yarn encore dev --watch
+yarnbuild:
+    docker-compose run --rm node-service yarn build
+
+yarnwatch:
+    docker-compose run --rm node-service yarn encore dev --watch
