@@ -1,7 +1,7 @@
 version: '3'
 
 networks:
-  nginx-php74-mysql8-phpmadmin-node:
+  app:
 
 services:
 
@@ -19,7 +19,7 @@ services:
       - mysql8-service
       - phpmyadmin-service
     networks:
-      - nginx-php74-mysql8-phpmadmin-node
+      - app
 
   # php
   php74-service:
@@ -32,7 +32,7 @@ services:
     volumes:
       - ./app:/var/www/project
     networks:
-      - nginx-php74-mysql8-phpmadmin-node
+      - app
 
   # mysql
   mysql8-service:
@@ -47,7 +47,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: secret
     networks:
-      - nginx-php74-mysql8-phpmadmin-node
+      - app
 
   # phpmyadmin
   phpmyadmin-service:
@@ -63,7 +63,7 @@ services:
     environment:
       PMA_HOST: mysql8-service
     networks:
-      - nginx-php74-mysql8-phpmadmin-node
+      - app
 
   # node
   node-service:
@@ -73,4 +73,4 @@ services:
       - ./app:/var/www/project
     working_dir: /var/www/project
     networks:
-      - nginx-php74-mysql8-phpmadmin-node
+      - app

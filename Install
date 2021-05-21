@@ -16,7 +16,12 @@ if [[ ! -z "$path" ]]; then
         echo ".env copied from .env.example"
     fi
     docker-compose run --rm php74-service composer install
+    docker-compose run --rm php74-service php bin/console d:d:c
+    docker-compose run --rm node-service yarn install
+    docker-compose run --rm node-service yarn build
 else
     echo "folder is empty"
     docker-compose run --rm php74-service composer create-project symfony/website-skeleton .
 fi
+
+echo "END"

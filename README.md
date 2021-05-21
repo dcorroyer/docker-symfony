@@ -1,16 +1,33 @@
 # A Symfony app w/ Docker
 
+### You can create a new app or dockerize your app
+
+## Prerequisites:
+
+If you want to create a new app with docker, skip this part and go to the **Installation** part.
+
+If you use this repository to dockerize your app, you have to create a folder named app and put your app inside the folder:
+
+    mkdir app
+
+In my case when I dockerize an app with the repository, I clone the repository of the app and rename the folder by app:
+
+    git clone git@github.com:**theprofile**/**therepository**
+    mv therepository app
+
 ## Installation:
 
-You have to clone this repository and make:
+You have to launch the **Install** script:
 
-    make up
+    ./Install
 
-If you have any denied permission, make sudo
+The script will search in your app folder if an app exists, make sure if the prerequisites are good for you.
 
-The command will download and install docker images to make your containers
+Now your project is up. GREAT !
 
-When it is done, you'll have these containers
+## Informations:
+
+When your app is up, you'll have these containers:
 
     php74-container
     mysql-container
@@ -20,26 +37,14 @@ You can access all your containers with this command:
 
     docker exec -it **yourcontainer** bash
 
-Now, if you want to create your Symfony 5 app, you have to connect to the php container:
+    OR
+    
+    docker-compose exec **yourservice** sh
+
+For example, if you want to connect to your php container, you can do this:
 
     docker exec -it php74-container bash
 
-In your container, you'll be in your working folder, you just have to create the project (will be built in the app folder):
-
-    composer create-project symfony/website-skeleton .
-
-Now your project is up. GREAT !
-
-## Services
-
-You need to use **services** to use php and yarn in your containers and you didn't need to connect any container to use them, stay in your primary folder:
-
-    docker-compose run --rm php74-service php bin/console d:d:c (to create database)
-    docker-compose run --rm node-service yarn install (to install nodejs dependencies)
-    docker-compose run --rm node-service yarn dev (to run webpack)
+## Makefile
 
 A Makefile is up to provide some short commands to help you.
-
-If you can't modify any file in the app folder, you can run this command in the php container:
-
-    chmod -R 777 .
