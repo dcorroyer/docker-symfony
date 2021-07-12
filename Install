@@ -24,4 +24,4 @@ else
     docker-compose run --rm php74-service composer create-project symfony/website-skeleton .
 fi
 
-echo "END"
+echo "process finished"

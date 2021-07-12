@@ -22,6 +22,9 @@ symfonyrun:
 composer:
 	docker-compose run --rm php74-service composer install
 
+routes:
+	docker-compose run --rm php74-service php bin/console fos:js-routing:dump --format=json --target=public/js/fos_js_routes.json
+
 dbcreate:
 	docker-compose run --rm php74-service php bin/console d:d:c
 
